@@ -100,7 +100,8 @@
 /*Iphone 5 320px*/
 @media (min-width : 480px) and (max-width: 768px) {
 
-.container-fluid {padding: 0px !important;}
+.container-fluid {padding: 5px !important;}
+.panel-default { border-color: #fff !important; }
 
 .panel-body {padding: 0px !important;}
 
@@ -136,6 +137,8 @@
 #CT_codigo {font-size: 10px;}
 
 .infoDetalhesResponsivo{display: block;}
+
+#CG_acao{display: none;}
 
 #RP_acao{}
 #RP_id{display: none;}
@@ -160,7 +163,8 @@
 /*Galax 360 px*/	
 @media (min-width : 320px) and (max-width : 480px) {
 	
-.container-fluid {padding: 0px !important;}
+.container-fluid {padding: 5px !important;}
+.panel-default { border-color: #fff !important; }
 
 .panel-body {padding: 0px !important;}
 
@@ -196,6 +200,18 @@
 #CT_codigo {font-size: 10px;}
 
 .infoDetalhesResponsivo{display: block;}
+
+#CG_acao{display: none;}
+
+#TL_codigo{}
+#TL_nome{}
+#TL_apelido{display: none;}
+#TL_cnpj{display: none;}
+#TL_cpf{display: none;}
+#TL_celular{display: none;}
+#TL_telefone{display: none;}
+#TL_email{display: none;}
+#TL_acao{display: none;}
 
 #RP_acao{}
 #RP_id{display: none;}
@@ -217,7 +233,8 @@
 
 @media (min-width : 200px) and (max-width : 320px) {
 
-	.container-fluid {padding: 0px !important;}
+.container-fluid {padding: 5px !important;}
+.panel-default { border-color: #fff !important; }
 
 .panel-body {padding: 0px !important;}
 
@@ -253,6 +270,8 @@
 #CT_codigo {font-size: 10px;}
 
 .infoDetalhesResponsivo{display: block;}
+
+#CG_acao{display: none;}
 
 #RP_acao{}
 #RP_id{display: none;}

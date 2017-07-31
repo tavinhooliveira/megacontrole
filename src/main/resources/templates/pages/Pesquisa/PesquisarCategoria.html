@@ -27,18 +27,18 @@
 		   		<table id="example" class="table table-striped table-bordered dt-responsive table-hover" >
 		   			<thead>
 		   				<tr>
-		   					<th id="CT_codigo" class="text-center col-md-1">Código</th>
-		   					<th id="CT_nome" class="text-left">Categoria</th>
-		   					<th id="CT_acao" class="text-center col-md-1">Ação</th>
+		   					<th id="CG_codigo" class="text-center col-md-1">Código</th>
+		   					<th id="CG_nome" class="text-left">Categoria</th>
+		   					<th id="CG_acao" class="text-center col-md-1">Ação</th>
 		   				</tr>
 		   			</thead>
 		   				   			
 		   			<tbody>
 		   				<tr th:each="categoria : ${categorias}"> 							   						   					
-		   					<td id="CT_codigo" class="text-center col-md-1" th:text="${categoria.codigo}"></td>
-		   					<td id="CT_nome" class="text-left"><a th:href="@{/controles/categoria/{codigo}(codigo=${categoria.codigo})}" 
+		   					<td id="CG_codigo" class="text-center col-md-1" th:text="${categoria.codigo}"></td>
+		   					<td id="CG_nome" class="text-left"><a th:href="@{/controles/categoria/{codigo}(codigo=${categoria.codigo})}" 
 							title="Editar" rel="tooltip" data-placement="top" th:text="${categoria.nomeCategoraia}"></td>
-		   					<td id="CT_acao" class="text-center col-md-1">
+		   					<td id="CG_acao" class="text-center col-md-1">
 		   						<a class="btn btn-link btn-xs" th:href="@{/controles/categoria/{codigo}(codigo=${categoria.codigo})}" 
 										
 		   								title="Editar" rel="tooltip" data-placement="top">
