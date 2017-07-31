@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div class="modal fade" id="cadastroCategoriaModal" tabindex="-1" role="dialog" th:fragment="cadastroCategoriaModal-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Cadastro de Categoria</h4>
+      </div>
+     
+	 <form class="form-horizontal" method="post" th:action="@{/controles/conta/categoriaModal}" th:object="${categoria}">					
+      <div class="modal-body">
+ 	
+			<div class="">
+				<label for="nomeCategoraia" class="control-label">Catégoria:</label>
+				<input type="text" class="form-control" id="nomeCategoraia" name="nomeCategoraia" />
+			</div>
+		
+		
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+</html>

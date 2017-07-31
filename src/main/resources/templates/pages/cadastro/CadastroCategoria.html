@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">
+		
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title label alert-success">Nova Categoria</h1>
+				<a class="btn btn-success pull-right" th:href="@{/controles/categoria}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+					class="glyphicon glyphicon-zoom-in"></span>Pesquisar Categoria</a>
+			</div>
+		</div>
+</div>
+
+<div class="container-fluid">
+
+	<form class="form-horizontal" method="post" th:action="@{/controles/categoria}" th:object="${categoria}">
+			<div th:replace="/layout/MensagemGeral :: alert"></div>
+			<div th:replace="/layout/MensagemErro :: alert"></div>
+		<div class="panel panel-default">
+
+			<div class="panel-body ">
+				<input type="hidden" th:field="*{codigo}" />				
+				
+				<div class="form-group">					
+					<div class="col-md-4"
+						th:classappend="${#fields.hasErrors('nomeCategoraia')} ? has-error">
+						<label for="nomeCategoraia" class="control-label">Categoria:</label>
+						<input type="text" class="form-control" id="nomeCategoraia" th:field="*{nomeCategoraia}" />
+					</div>
+				</div>				
+
+				<div class="form-group">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+						<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</form>
+
+</div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">		
+	<div class="panel-heading">
+		<div class="clearfix">
+			<h1 class="panel-title label alert-success">Conta</h1>
+			<a class="btn btn-success pull-right" th:href="@{/controles/conta/novo}" sec:authorize="hasRole('ROLE_USER')"><span
+				class="glyphicon glyphicon-plus-sign"></span>Nova Conta</a>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	
+
+<section id="navegacao"><br>		        	
+       <ul class="nav nav-tabs">
+       		<li class="active"><a href="#tab1" data-toggle="tab" ><span class="glyphicon glyphicon-th-list"></span></a></li>
+	       	<li><a href="#tab2" data-toggle="tab" >Pagamentos</a></li>
+	       	<li><a href="#tab3" data-toggle="tab" >Recebimentos</a></li>
+       </ul >
+       <div class="tab-content">
+                           
+	        <div class="tab-pane active" id="tab1">
+	        <div class="panel-body">
+	   		<div class="table-responsive">
+		   		<table id="example" class=" example table table-striped table-bordered dt-responsive table-hover" 
+		   		data-toggle="table">		   		
+		   		
+		   			<thead>
+		   				<tr>
+		   					<th id="CT_codigo" class="text-center col-md-1">Código</th>
+		   					<th id="CT_descricao" class="text-left">Descricao</th>
+		   					<th id="CT_valor" class="text-left col-md-1">Valor</th>
+		   					<th id="CT_data" class="text-left">Vencimento</th>
+		   					<th id="CT_fPagamento" class="text-left">F.Pagamento</th>
+		   					<th id="CT_status" class="text-left">Status</th>
+		   					<th id="CT_pessoa" class="text-left">Atruiduido a:</th>
+		   					<th id="CT_acao" class="text-center col-md-1" sec:authorize="hasRole('ROLE_ADMIN')">Ação</th>
+		   					
+		   						   				
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="conta : ${contas}"> 							   						   					 
+<!-- 		   					<td id="CT_codigo" class="text-center" th:text="${conta.codigo}"></td> -->
+		   					
+		   					<td id="CT_codigo" class="text-center">										
+								<div class="badge huge" th:text=" ${conta.codigo}"></div>
+								<div class="clearfix"></div>
+								<div class="label"
+								th:text="${conta.tipoConta.descricao}" th:classappend="${conta.Receita ? 'label-primary' : 'label-info'}">
+								</div>																			
+							</td>
+		   					
+		   					
+		   					<td id="CT_descricao" 
+		   					class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
+							title="Editar" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></a>
+								<div class="tdInfoDetalhes infoDetalhesResponsivo">
+									<small th:text="|Vencimento: ${{conta.dataVencimento}} - |"></small>										
+									<small th:text="|R$: ${{conta.valorConta}} - |"></small>										
+									<small th:text="| ${{conta.status}}|"></small>										
+								</div>
+							
+							</td>		
+														
+		   					<td id="CT_valor" class="text-left" th:text="|R$ ${{conta.valorConta}}|"></td>
+		   					<td id="CT_data" class="text-left" th:text="${{conta.dataVencimento}}"></td>
+		   					<td id="CT_fPagamento" class="text-center"><mark class="text-center" th:text="${{conta.formaPagamento.descricao}}"></mark></td>		   					
+		   					<td id="CT_status" class="text-center"><span class="text-center label" th:text="${conta.status.descricao}" th:classappend="${conta.pendente ? 'label-warning' :  conta.pago ? 'label-success'  : 'label-danger'}"></span></td>
+		   					<td id="CT_pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
+		   					<td id="CT_acao" class="text-center" sec:authorize="hasRole('ROLE_ADMIN')">
+		   						<a class="btn btn-link btn-xs" th:href="@{/controles/conta/{codigo}(codigo=${conta.codigo})}"										
+		   							title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>		   						
+		   						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+									th:attr="data-codigo=${conta.codigo}, data-descricao=${conta.descricao}"		   								
+	   								title="Excluir" rel="tooltip" data-placement="top">
+	   								<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   					</td>
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>                            
+	    </div>
+	       	<div class="tab-pane" id="tab2"> 	       	
+	       		<div th:replace="pages/Pesquisa/include/ContaPagar :: conta-pagar"></div>                       
+            </div>
+            
+            <div class="tab-pane" id="tab3"> 	       	
+	       		<div th:replace="pages/Pesquisa/include/ContaReceber :: conta-receber"></div>                       
+            </div>	                          
+       </div>
+</section>
+
+</div>
+<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
+</section>
+</body>
+</html>

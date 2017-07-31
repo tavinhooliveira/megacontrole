@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">
+		
+		<div class="panel-heading">
+			<div class="clearfix">
+					<h1 class="panel-title label alert-success">Atualizar</h1>
+	
+					<a class="btn btn-success pull-right menu-superior" th:href="@{/controles/conta/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+						class="glyphicon glyphicon-plus-sign"></span>Novo</a>
+
+					<a class="btn btn-success pull-right " th:href="@{/controles/conta}" sec:authorize="hasRole('ROLE_USER')"><span
+						class="glyphicon glyphicon-zoom-in"></span>Pesquisar</a>
+			</div>
+		</div>
+
+</div>
+
+<div class="container-fluid">
+ 
+<div class="col-md-12 alert detalhes">
+			<div class="col-md-2" >
+				<label>Código Conta: </label><span class="text-primary" th:text="${parcela.conta.codigo}"></span>
+			</div>
+			<div class="col-md-6">
+				<label>Descrição: </label><span class="text-primary text-uppercase" th:text="${parcela.conta.descricao}"></span>
+			</div>
+						
+			<div class="col-md-3 ">
+				<label>Status: </label><span class="text-center label" th:text="${parcela.conta.status.descricao}"
+				 th:classappend="${parcela.conta.pendente ? 'label-warning' : 'label-success'}"></span></td>
+			</div>		
+
+			<div class="col-md-2">
+				<label>Valor: </label><span class="text-primary" th:text="${{parcela.conta.valorConta}}"></span>
+			</div>
+			<div class="col-md-3">
+				<label>Forma de Pagamento: </label><span class="text-primary" th:text="${parcela.conta.formaPagamento.descricao}"></span>
+			</div>
+			
+			<div class="col-md-3">
+				<label>Parcelas: </label><span class="text-primary" th:text="${parcela.conta.totalParcela}"></span>
+			</div>
+			<div class="col-md-3">
+				<label>Data Vencimento: </label><span class="text-primary" th:text="${{parcela.conta.dataVencimento}}"></span>
+			</div>
+			<div class="col-md-5">
+				<label>Pessoa: </label><span class="text-primary text-uppercase" th:text="${parcela.conta.pessoa.nomePessoa}"></span>
+			</div>
+			<div class="col-md-3">
+				<label>Categoria: </label><span class="text-primary" th:text="${parcela.conta.categoria.nomeCategoraia}"></span>
+			</div>
+
+
+</div>
+    
+ 
+<div class="block"> 
+    <form class="form-horizontal" method="post" th:action="@{/controles/parcela}" th:object="${parcela}">
+  	    	<div class="col-md-12 alert detalhes">
+		    	<div class="panel-body ">
+			    		<div class="form-group" style="display: none;">
+			    			<div class="col-md-2">
+								<label for="descricaoParcela" class="control-label">Código da Parcela:</label>
+				   				<input th:field="*{codigo}" id="codigo" readonly/>
+				   			</div>			   			
+				   			<div class="col-md-1">
+								<label for="descricaoParcela" class="control-label">Conta Relacionada:</label>
+				   				<input th:field="*{conta.codigo}" id="codigoparcela" readonly/>
+				   			</div>
+			   			</div>
+			   			<div class="form-group">
+			   			<div class="col-md-2" >
+								<label>Código da Parcela:</label><span class="text-primary" th:text="${conta.codigo}"></span>
+						</div></div>  					    							
+						<div class="form-group">					
+							<div class="col-md-4">
+								<label for="descricaoParcela" class="control-label">Descrição da Parcela:</label>
+								<input type="text" class="form-control block" disabled="disabled" id="descricaoParcela" th:text="${descricaoParcela}" th:value="${descricaoParcela}" name="descricaoParcela" th:field="*{descricaoParcela}"/>
+							</div>
+								
+							<div class="col-md-2">
+								<label for="mesCompetencia" class="control-label">Competencias:</label> <select
+									class="form-control block" disabled="disabled" name="mesCompetencia" id="mesCompetencia" >
+									<option th:each="MesCompetencia : ${AllMesCompetencia}"
+										th:value="${MesCompetencia}" th:field="*{MesCompetencia}" th:text="${MesCompetencia.descricao}"></option>
+								</select>
+							</div>
+							<div class="col-md-2">
+							<label for="dataVencimento" class="control-label">Data Vencimento:</label>
+								<input type="text" class="form-control block" disabled="disabled" id="dataVencimento" placeholder="Informe a Data"
+									data-provide="datepicker"
+									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+									data-date-autoclose="true" data-date-today-highlight="true"
+									data-date-orientation="bottom" name="dataVencimento" th:field="*{dataVencimento}"/>
+							</div>
+							<div class="col-md-2">
+							<label for="dataPagamento" class="control-label">Data pagamento:</label>
+								<input type="text" class="form-control block" disabled="disabled" id="dataPagamento" placeholder="Informe a Data"
+									data-provide="datepicker"
+									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+									data-date-autoclose="true" data-date-today-highlight="true"
+									data-date-orientation="bottom"  name="dataPagamento" th:field="*{dataPagamento}"/>
+							</div>
+							<div class="col-md-2">
+								<label for="valorParcela" class="control-label">Valor:</label>
+								<div class="input-group">
+								<div class="input-group-addon">R$</div>
+								<input type="text" class="form-control js-moeda block" disabled="disabled" id="valorParcela" name="valorParcela" th:field="*{valorParcela}"/></div>
+							</div>										
+							<div class="col-md-2">
+								<label for="status" class="control-label">Status:</label> <select
+									class="form-control block" disabled="disabled" name="status" id="status" >
+									<option th:each="Status : ${AllStatus}"
+										th:value="${Status}" th:field="*{Status}" th:text="${Status.descricao}"></option>
+								</select>
+							</div>
+							<div class="col-md-2">
+								<label for="numeroDocumento" class="control-label">Número Documento:</label>
+								<input type="number" class="form-control block" disabled="disabled" id="numeroDocumento" name="numeroDocumento" th:field="*{numeroDocumento}"/>
+							</div>
+							<div class="col-md-4">
+								<label for="notaFiscalNF" class="control-label">NFe:</label>
+								<input type="text" class="form-control block" disabled="disabled" id="notaFiscalNF" name="notaFiscalNF" th:field="*{notaFiscalNF}"/>
+							</div>
+							<div class="col-md-4">
+								<label for="pessoa" class="control-label">Responsavel:</label>
+								<select
+									class="form-control block" disabled="disabled" name="pessoa" id="pessoa">
+									<option th:each="Pessoas : ${ListPessoas}"
+									th:value="${Pessoas.codigo}" th:text="${Pessoas.nomePessoa}" th:field="*{pessoa}"></option>
+								</select>
+							</div>
+														
+							
+						</div>
+						
+						
+						<div class="form-group">
+							<div class="col-md-10 " sec:authorize="hasRole('ROLE_ADMIN')">
+								<a   
+									class="btn btn-success btn_block"  
+									title="Editar Parcela"  rel="tooltip" data-placement="bottom">Editar								
+								</a>
+								<button type="submit" disabled="disabled" class="btn btn-primary block">Salvar</button>
+								<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+							</div>
+							
+						</div>					
+				</div>
+	    	</div>
+    	</form>
+    </div>
+
+</div>
+</section>
+</body>
+
+</html>

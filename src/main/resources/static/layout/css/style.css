@@ -1,0 +1,275 @@
+.Dicon{color: #D6E2E1;}
+
+
+
+.navbar-brand {	padding-top: 12px;}
+.aw-link-panel {float: right; padding: 0px;}
+.aw-titulo-panel {float: left;	padding-top: 2px; color: #4e4e4e;}
+.panel-primary>.panel-heading {margin-top: 0px;}
+.navbar-inverse {background-color: #444444; border-color: #000000;}
+.navbar-brand img {margin-left: 10; margin-bottom: 15px; height: 30px;}
+#pageNav {margin: 0; float: left;}
+#logo{margin-top: -5px;}
+.menu-superior{margin-left: 10px;  padding-right: 11px;}
+
+/*DataHora*/
+#datahora{padding: 11px 0 0 0; float: right}
+#datahora p {padding: 5px; color: #ffffff; font-size: 14px}
+
+/*Grid*/
+#example_length{padding: 7px; float: right}
+#example_filter{padding: 7px; float: left; }
+#busca{width: 650px}
+#example_paginate {margin-top: 3px; float: right; margin-right: 30px;}
+#example_paginate span {padding: 7px}
+#example_paginate span a {padding: 5px}
+#example_info {float: left; color: #337ab7;}
+
+#msgGeral {/*margin-top: 52px; margin-bottom: -77px; position: relative;*/}
+#msgError {/*margin-top: 52px; margin-bottom: -77px; position: relative;*/}
+
+/*login*/
+#login{}
+
+.table-detalhe{font-size: 10px; font-family: inherit;}
+
+/*Error 403*/
+#error403{margin-top: 5%;}
+
+/*Error 500*/
+#error500{margin-top: 5%;}
+
+
+/*caixa de Detalhes*/
+.detalhes {
+    color: #636763;
+    background-color: rgba(245, 245, 245, 0.52);
+    border-color: #e6e6e6;
+}
+
+.tdInfoDetalhes {
+	color: #636763;
+    font-size: smaller;
+    margin: 0 0 0 0px;
+	
+}
+
+#tbdescricao {display: none;}
+#tbdtaPrevista {display: none;}
+#tbdtaFinal {display: none;}
+
+#tbHorasDetalhe{ font-family: sans-serif; font-size: 12px;}
+
+#print{ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 13px !important;}
+
+#tbn-nav-new{margin-left: 5px; margin-right: 5px;}
+
+.btn_detalhes{padding: 7px; margin-bottom: 10px !important;}
+
+
+.text-primary { color: #337ab7; margin: 4px !important;}
+
+
+
+
+
+/*------------------------------------------*\
+  Box
+  - Para ser usado em indicadores (dahboard)
+\*------------------------------------------*/
+
+.fa-5x { font-size: 5em; color: #5cb85c; }
+.fa-3x { font-size: 3em; color: #5cb85c; }
+
+.sub-toral{padding: 5px;}
+
+.panel-dasb-bloco {
+    border-color: #e6e6e6;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.infoDetalhesResponsivo{display: none;}
+
+/* modal */
+@media (min-width: 768px)bootstrap.min.css:5.modal-dialog {width: 900px; margin: 30px auto;}
+
+
+/* -----------------------------------------------[Configuração Responsiva]------------------------------------------------- */
+/*Iphone 5 320px*/
+@media (min-width : 480px) and (max-width: 768px) {
+
+.container-fluid {padding: 0px !important;}
+
+.panel-body {padding: 0px !important;}
+
+#BoxValorTotal{font-family: monospace; font-size: 0px;}
+	
+/*Header*/
+.page-header{margin: 0px 0 18px !important;}	
+
+#logo {margin-top: -4px;}
+
+.navbar { position: relative; min-height: 50px; margin-bottom: -2px !important; border: 1px solid transparent;}
+.panel-primary>.panel-heading {margin-top: -49px;}	
+#example_length{display: none;}
+#busca {width: 259px;}
+#example_filter span {display: none;}
+#example_filter {float: inherit;  padding-top: 17px;}
+#example_info {display: none;}
+#example_paginate {float: inherit; padding: 15px;}
+.navbar-brand img {margin-left: 10px}
+#datahora {padding: 7px 11px 0 0; float: right}
+#datahora p { padding: 0px; margin-bottom: -8px; font-size: 9px}
+
+
+/*campos ocultados da grid responsiva*/
+#CT_fPagamento {display: none;}
+#CT_status {display: none;}
+#CT_pessoa {display: none;}
+#CT_acao {display: none;}
+#CT_data {display: none;}
+#CT_pessoa {display: none;}
+
+#CT_valor {display: none;}
+#CT_codigo {font-size: 10px;}
+
+.infoDetalhesResponsivo{display: block;}
+
+#RP_acao{}
+#RP_id{display: none;}
+#RP_responsavel{}
+#RPemail{display: none;} 
+
+
+.login-page {width: 270px; padding: 8% 0 0; margin: auto;}
+.copyright{display: none;}
+
+
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 0px solid #ddd !important;}
+
+
+
+
+}
+/*End*/
+
+
+/*Galax 360 px*/	
+@media (min-width : 320px) and (max-width : 480px) {
+	
+.container-fluid {padding: 0px !important;}
+
+.panel-body {padding: 0px !important;}
+
+#BoxValorTotal{font-family: monospace; font-size: 0px;}
+	
+/*Header*/
+.page-header{margin: 0px 0 18px !important;}	
+
+#logo {margin-top: -4px;}
+
+.navbar { position: relative; min-height: 50px; margin-bottom: -2px !important; border: 1px solid transparent;}
+.panel-primary>.panel-heading {margin-top: -49px;}	
+#example_length{display: none;}
+#busca {width: 259px;}
+#example_filter span {display: none;}
+#example_filter {float: inherit;  padding-top: 17px;}
+#example_info {display: none;}
+#example_paginate {float: inherit; padding: 15px;}
+.navbar-brand img {margin-left: 10px}
+#datahora {padding: 7px 11px 0 0; float: right}
+#datahora p { padding: 0px; margin-bottom: -8px; font-size: 9px}
+
+
+/*campos ocultados da grid responsiva*/
+#CT_fPagamento {display: none;}
+#CT_status {display: none;}
+#CT_pessoa {display: none;}
+#CT_acao {display: none;}
+#CT_data {display: none;}
+#CT_pessoa {display: none;}
+
+#CT_valor {display: none;}
+#CT_codigo {font-size: 10px;}
+
+.infoDetalhesResponsivo{display: block;}
+
+#RP_acao{}
+#RP_id{display: none;}
+#RP_responsavel{}
+#RPemail{display: none;} 
+
+
+.login-page {width: 270px; padding: 8% 0 0; margin: auto;}
+.copyright{display: none;}
+
+
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 0px solid #ddd !important;}
+    
+
+
+}
+/*End*/
+
+@media (min-width : 200px) and (max-width : 320px) {
+
+	.container-fluid {padding: 0px !important;}
+
+.panel-body {padding: 0px !important;}
+
+#BoxValorTotal{font-family: monospace; font-size: 0px;}
+	
+/*Header*/
+.page-header{margin: 0px 0 18px !important;}	
+
+#logo {margin-top: -4px;}
+
+.navbar { position: relative; min-height: 50px; margin-bottom: -2px !important; border: 1px solid transparent;}
+.panel-primary>.panel-heading {margin-top: -49px;}	
+#example_length{display: none;}
+#busca {width: 259px;}
+#example_filter span {display: none;}
+#example_filter {float: inherit;  padding-top: 17px;}
+#example_info {display: none;}
+#example_paginate {float: inherit; padding: 15px;}
+.navbar-brand img {margin-left: 10px}
+#datahora {padding: 7px 11px 0 0; float: right}
+#datahora p { padding: 0px; margin-bottom: -8px; font-size: 9px}
+
+
+/*campos ocultados da grid responsiva*/
+#CT_fPagamento {display: none;}
+#CT_status {display: none;}
+#CT_pessoa {display: none;}
+#CT_acao {display: none;}
+#CT_data {display: none;}
+#CT_pessoa {display: none;}
+
+#CT_valor {display: none;}
+#CT_codigo {font-size: 10px;}
+
+.infoDetalhesResponsivo{display: block;}
+
+#RP_acao{}
+#RP_id{display: none;}
+#RP_responsavel{}
+#RPemail{display: none;} 
+
+
+.login-page {width: 270px; padding: 8% 0 0; margin: auto;}
+.copyright{display: none;}
+
+
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 0px solid #ddd !important;}
+
+	
+
+
+
+
+}/*End*/

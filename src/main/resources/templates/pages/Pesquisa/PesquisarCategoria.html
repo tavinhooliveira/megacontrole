@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">
+		
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title label alert-success">Categoria</h1>
+				<a class="btn btn-success pull-right" th:href="@{/controles/categoria/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+					class="glyphicon glyphicon-plus-sign"></span>Nova Categoria</a>
+			</div>
+		</div>
+</div>
+
+<div class="container-fluid">
+
+<div class="panel-body">
+   		
+	   		<div class="table-responsive">
+		   		<table id="example" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="CT_codigo" class="text-center col-md-1">Código</th>
+		   					<th id="CT_nome" class="text-left">Categoria</th>
+		   					<th id="CT_acao" class="text-center col-md-1">Ação</th>
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="categoria : ${categorias}"> 							   						   					
+		   					<td id="CT_codigo" class="text-center col-md-1" th:text="${categoria.codigo}"></td>
+		   					<td id="CT_nome" class="text-left"><a th:href="@{/controles/categoria/{codigo}(codigo=${categoria.codigo})}" 
+							title="Editar" rel="tooltip" data-placement="top" th:text="${categoria.nomeCategoraia}"></td>
+		   					<td id="CT_acao" class="text-center col-md-1">
+		   						<a class="btn btn-link btn-xs" th:href="@{/controles/categoria/{codigo}(codigo=${categoria.codigo})}" 
+										
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   						<a class="btn btn-link btn-xs" th:href="@{/controles/categoria/delete/{codigo}(codigo=${categoria.codigo})}"
+		   								
+		   								title="Excluir" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   					</td>
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+</div>
+
+</div>
+
+</section>
+</body>
+</html>

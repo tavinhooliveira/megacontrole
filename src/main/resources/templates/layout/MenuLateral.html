@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+
+  		<aside class="aw-layout-sidebar  js-sidebar " th:fragment="layout-menuLateral">
+		<div class="aw-layout-sidebar__content">
+
+		    <nav class="aw-menu  js-menu">
+		      <ul class="aw-menu__list">
+		      
+		      		<li class="aw-menu__item" sec:authorize="hasRole('ROLE_USER')">
+						<a th:href="@{/controles}"><i class="glyphicon glyphicon-home"></i><span>Home</span></a>
+					</li>
+		
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_USER')">
+						<a th:href="@{/controles/conta}"><i class="glyphicon glyphicon-usd"></i><span>Contas</span></a>
+					</li>
+					
+					<!--
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/controles/parcela}"><i class="glyphicon glyphicon-tags"></i><span>Parcelas</span></a>
+					</li>
+					 -->
+					
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/controles/pessoa}"><i class="glyphicon glyphicon-user"></i><span>Pessoa</span></a>
+					</li>
+					
+					<!--  
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/controles/fornecedor}"><i class="glyphicon glyphicon-lock"></i><span>Fornecedor</span></a>
+					</li>
+					-->
+					
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/controles/categoria}"><i class="glyphicon glyphicon-tag"></i><span>Categorias</span></a>
+					</li>
+					
+							
+					
+		
+		      </ul>
+		    </nav>
+		</div>
+	</aside>
+  	
+
+</html>

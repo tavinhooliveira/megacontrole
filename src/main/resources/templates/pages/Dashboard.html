@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+
+<body>
+	<section layout:fragment="conteudo">
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title label alert-success">Dashboard</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-dasb-bloco">
+						<a th:href="@{/controles/conta}">
+							<div class="panel-heading ">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-usd fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<strong class="text-success text-bold">Contas</strong>
+										<div class="badge huge" th:text="${totalContas}"></div>
+										
+										<div class="sub-toral">
+											<div class="tdInfoDetalhes">
+												Pagamentos: <i th:text="${{totalContaDespesa}}"></i>
+											</div>
+											<div class="tdInfoDetalhes">
+												Recebimentos: <i th:text="${{totalContaReceber}}">
+											</div>											
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-dasb-bloco">
+						<a th:href="@{/controles/pessoa}">
+							<div class="panel-heading ">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-user fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<span class="badge" th:text="${totalPessoas}">15</span>
+										<div class="text-success">Pessoas</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-dasb-bloco">
+						<a th:href="@{/controles/categoria}">
+							<div class="panel-heading ">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-tag fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<span class="badge" th:text="${totalCategorias}">124</span>
+										<div class="text-success">Categorias</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-dasb-bloco">
+						<a href="#">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-book fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<span class="badge"> 13</span>
+										<div class="text-success">Relatórios</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="container-fluid">
+		<div class="row">
+		
+		<div class="col-md-6" id="BoxValorTotal">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<label class="text-center text-success">Total</label>
+				</div>
+				<div class="panel-body">
+					<div class="col-md-8">
+						<i class="pull-left fa fa-signal fa-3x "></i>
+						<h3 >Valor Total
+						<span class="tdInfoDetalhes">Receitas & Despesas</span>
+						</h3>
+					</div>
+					<blockquote class="alert alert-success col-md-12">
+						<div>
+							<i class="glyphicon glyphicon-barcode"></i> Pagamentos: <span th:if="${not valorContasDespesa.empty}"
+								class="pull-right" th:text="| R$ ${{valorContasDespesa}}|"></span>
+						</div>
+						<div>
+							<i class="glyphicon glyphicon-piggy-bank"></i>
+							<span> Recebimentos: </span> 
+							<span class="pull-right" th:text="| R$ ${{valorContasReceita}}|"></span>
+						</div>
+					</blockquote>
+					
+					<blockquote class="alert alert-success col-md-12">
+						<div class="">
+							<i class="glyphicon glyphicon-indent-right"></i>
+							<span>Parcelamentos:</span> 
+							<span class="" th:text="|${{valorPacelaCont}}|"></span>
+							<span class="pull-right" th:text="|R$: ${{valorPacelaQTDA}}|"></span>
+							
+							
+						</div>
+					</blockquote>	
+				
+				</div>
+				<a th:href="@{/controles}">
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <span
+						class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+				</a>
+			</div>
+		</div>
+		
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<label class="text-center text-success">Vencimentos para Hoje</label>
+		</div>
+
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table id="tddash" class="table table-hover">
+
+					<tbody>
+
+						<tr th:each="pgat : ${contaVencimentohoje}">
+							<td id="pfCodigo" class="text-center"><i
+								class="badge huge" th:text=" ${{pgat.codigo}}"></i>
+							
+								<span
+								class="text-center label"
+								th:text="${pgat.tipoConta.descricao}"
+								th:classappend="${pgat.Receita ? 'label-primary' : 'label-info'}"></span>
+								
+							</td>
+								
+							<td id="pfDescricao"><a class="text-left"
+								th:text=" ${{pgat.descricao}}"
+								th:href="@{/controles/conta/detalhes/{codigo}(codigo=${pgat.codigo})}"
+								th:title="|Vencimento: ${{pgat.dataVencimento}}|"
+								rel="tooltip" data-placement="bottom"></a></td>
+
+						</tr>
+
+						<tr th:if="${contaVencimentohoje.empty}">
+							<td colspan="5">Nenhum Conta Com o Vencimento Para Hoje!</td>
+						</tr>
+					</tbody>
+				</table>
+					<span class="text-default pull-left" th:if="${! contaVencimentohoje.empty}">Ultimas 3 contas</span>
+					<span id="pfCodigo" class="text-center badge pull-right" th:if="${! contaVencimentohoje.empty}"
+					th:text="|Total: ${{contaVencimentoAtrasadoQuant}}|"></span>
+			</div>
+		</div>
+		<a th:href="@{/controles/conta}">
+		<div class="panel-footer">
+			<span class="pull-left">View Details</span> <span
+				class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+			<div class="clearfix"></div>
+		</div>
+		</a>
+	</div>
+</div>
+		
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<label class="text-center text-success">Vencimentos Atrasados </label>
+				</div>
+
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table id="tddash" class="table table-hover">
+
+
+							<tbody>
+
+								<tr th:each="pgat : ${pagamentosAtrasados}">
+									<td id="pfCodigo" class="text-center"><i
+										class="badge huge" th:text=" ${{pgat.codigo}}"></i>
+										
+										<span
+										class="text-center label"
+										th:text="${pgat.tipoConta.descricao}"
+										th:classappend="${pgat.Receita ? 'label-primary' : 'label-info'}"></span>
+									
+									</td>
+									
+									<td id="pfCodigo"><a class="text-left"
+										th:text=" ${{pgat.descricao}}"
+										th:href="@{/controles/conta/detalhes/{codigo}(codigo=${pgat.codigo})}"
+										th:title="|Vencimento: ${{pgat.dataVencimento}}|"
+										rel="tooltip" data-placement="bottom"></a></td>
+									
+								</tr>
+
+								<tr th:if="${pagamentosAtrasados.empty}">
+									<td colspan="5">Nenhum Pagamento Atrasado!</td>
+								</tr>
+							</tbody>
+						</table>
+						<span class="text-default pull-left" th:if="${! pagamentosAtrasados.empty}">Ultimas 3 contas</span>
+						<span id="pfCodigo" class="text-center badge pull-right" th:if="${! pagamentosAtrasados.empty}"
+							th:text="|Total: ${{qtdPagamentosAtrasado}}|"></span>
+					</div>
+				</div>
+				<a href="#">              
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <span
+						class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+		
+		
+	</section>
+</body>
+</html>

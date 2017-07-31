@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="container-fluid">
+       	<div class="tab-pane" id="tab3" th:fragment="conta-receber">                            
+              
+               
+                <div class="panel-body">
+	   		<div class="table-responsive">
+		   		<table id="tabela" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="CT_codigo" class="text-center col-md-1">Código<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="CT_descricao" class="text-left">Descricao<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="CT_Pessoa" class="text-left">Recebido de:<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="CT_valor" class="text-left col-md-1">Valor<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="CT_data" class="text-left col-md-1">Data<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="CT_fPagamento" class="text-left">F.Pagamento</th>
+		   					<th id="CT_status" class="text-left">Status</th>
+		   					<th id="CT_acao" class="text-center col-md-1">Ação</th>
+		   					
+		   						   				
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="conta : ${contas}" th:if="${conta.tipoConta.descricao == 'Receita'}"> 							   						   					 
+		   					<td id="CT_codigo" class="text-center" th:text="${conta.codigo}"></td>
+		   					<td id="CT_descricao" class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
+							title="Editar" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></td>
+		   					<td id="CT_Pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
+		   					<td id="CT_valor" class="text-left" th:text="|R$ ${{conta.valorConta}}|"></td>
+		   					<td id="CT_data" class="text-left" th:text="${{conta.dataVencimento}}"></td>
+		   					<td id="CT_fPagamento" class="text-center"><mark th:text="${{conta.formaPagamento.descricao}}"></mark></td>
+		   					<td id="CT_status" class="text-center"><span class="text-center label" th:text="${conta.status.descricao}" th:classappend="${conta.pendente ? 'label-warning' :  conta.pago ? 'label-success'  : 'label-danger'}"></span></td>   					
+		   					<td id="CT_acao" class="text-center">
+		   						<a class="btn btn-link btn-xs" th:href="@{/controles/conta/{codigo}(codigo=${conta.codigo})}" 
+										
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+									th:attr="data-codigo=${conta.codigo}, data-descricao=${conta.descricao}"		   								
+	   								title="Excluir" rel="tooltip" data-placement="top">
+	   								<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   					</td>
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+                                        
+       	</div>
+                        
+</div>
+<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
+</section>
+</body>
+</html>

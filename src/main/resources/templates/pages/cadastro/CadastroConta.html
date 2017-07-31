@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">
+		
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title label alert-success">Nova Conta</h1>
+				<a class="btn btn-success pull-right" th:href="@{/controles/conta}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+					class="glyphicon glyphicon-zoom-in"></span>Pesquisar Conta</a>
+			</div>
+		</div>
+</div>
+
+<div class="container-fluid">
+
+<form class="form-horizontal" method="post" th:action="@{/controles/conta}" th:object="${conta}">
+		<div th:replace="/layout/MensagemGeral :: alert"></div>
+		<div th:replace="/layout/MensagemErro :: alert"></div>
+		<div class="panel panel-default">
+
+			<div class="panel-body ">
+				<input type="hidden" th:field="*{codigo}"/>				
+				
+				<div class="form-group">
+					<div class="col-md-2">
+						<label for="tipoConta" class="control-label">Tipo da Movimentação:</label> <select
+							class="form-control" name="tipoConta" id="tipoConta" th:field="*{tipoConta}">
+							<option th:each="tipoConta : ${AllTipoConta}"
+								th:value="${tipoConta}" th:text="${tipoConta.descricao}"></option>
+						</select>
+					</div>									
+					<div class="col-md-4">
+						<label for="descricao" class="control-label">Descrição da Conta:</label>
+						<input type="text" class="form-control" id="descricao" th:field="*{descricao}"/>
+					</div>
+					<div class="col-md-2">
+						<label for="valorConta" class="control-label">Valor:</label>
+						<div class="input-group">
+						<div class="input-group-addon">R$</div>
+						<input type="text" class="form-control js-moeda" id="valorConta" th:field="*{valorConta}"/></div>
+					</div>										
+					<div class="col-md-2">
+						<label for="status" class="control-label">Status:</label> <select
+							class="form-control" name="status" id="status" th:field="*{status}">
+							<option th:each="Status : ${AllStatus}"
+								th:value="${Status}" th:text="${Status.descricao}"></option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label for="formaPagamento" class="control-label">Forma Pagamento:</label> <select 
+							class="form-control " name="formaPagamento" id="formaPagamento" th:field="*{formaPagamento}">
+							<option th:each="FormaPagamento : ${AllFormaPagamento}"
+								th:value="${FormaPagamento}" th:text="${FormaPagamento.descricao}">
+							</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">					
+					<div class="col-md-3">
+						<label for="pessoa" class="control-label">Atribuido a:</label>
+						<a class="glyphicon glyphicon-plus-sign pull-right" data-toggle="modal" data-target="#cadastroPessoaModal"></a>
+						 <select
+							class="form-control" name="pessoa" id="pessoa" th:field="*{pessoa}">
+							<option th:each="Pessoas : ${ListPessoas}"
+								th:value="${Pessoas.codigo}" th:text="${Pessoas.nomePessoa}"></option>
+						</select>
+					</div>
+					
+					<div class="col-md-2 showVencimento" >
+						<label for="dataVencimento" class="control-label ">Data Vencimento:</label>
+							<input type="text" class="form-control" id="dataVencimento" placeholder="Informe a Data"
+								th:field="*{dataVencimento}" data-provide="datepicker"
+								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+								data-date-autoclose="true" data-date-today-highlight="true"
+								data-date-orientation="bottom" />
+					</div>
+					
+					<div class="col-md-2 PAGO">
+						<label for="dataPagamento" class="control-label">Data Pagamento:</label>
+							<input type="text" class="form-control" id="dataPagamento" placeholder="Informe a Data"
+								th:field="*{dataPagamento}" data-provide="datepicker"
+								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+								data-date-autoclose="true" data-date-today-highlight="true"
+								data-date-orientation="bottom" />
+					</div>
+						
+					<div class="col-md-2 PARCELADO">
+						<label for="totalParcela" class="control-label">Número de Parcelas:</label>
+						<input type="number" class="form-control" id="totalParcela" th:field="*{totalParcela}"/>
+					</div>
+					
+					<div class="col-md-2">
+						<label for="categoria" class="control-label">Catégoria:</label>
+						<a class="glyphicon glyphicon-plus-sign pull-right" data-toggle="modal" data-target="#cadastroCategoriaModal"></a>
+						<select
+							class="form-control" name="categoria" id="categoria" th:field="*{categoria}">
+							<option th:each="Categorias : ${ListCategorias}"
+								th:value="${Categorias.codigo}" th:text="${Categorias.nomeCategoraia}"></option>
+						</select>
+					</div>												    
+					
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+						<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</form>
+
+</div><!-- END Fluid -->
+<div th:replace="layout/CadastroRapidoPessoaModal :: cadastroPessoaModal-modal"></div>
+<div th:replace="layout/CadastroRapidoCategoriaModal :: cadastroCategoriaModal-modal"></div>
+</section>
+
+</body>
+</html>

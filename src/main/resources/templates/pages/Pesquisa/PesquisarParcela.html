@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="panel panel-primary">
+		
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title label alert-success">Parcela</h1>
+				<a class="btn btn-success pull-right" th:href="@{/controles/parcela/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+					class="glyphicon glyphicon-plus-sign"></span>Nova Parcela</a>
+			</div>
+		</div>
+		
+		
+ <div th:replace="/layout/MensagemGeral :: alert"></div>
+      
+    <form class="form-horizontal" method="post" th:action="@{/controles/parcela}" th:object="${parcela}">
+  	    	<div class="col-md-12 alert detalhes">
+		    	<div class="panel-body ">
+		    	
+	   			
+					<label>Código: </label><label class="text-info" th:text="${parcela.codigo}" name="codigo"></label>	
+		   				   					    							
+						<div class="form-group">					
+							<div class="col-md-4">
+								<label for="descricaoParcela" class="control-label">Descrição da Parcela:</label>
+								<input type="text" class="form-control" id="descricaoParcela" name="descricaoParcela" th:field="${descricaoParcela}"/>
+							</div>
+								
+							<div class="col-md-2">
+								<label for="mesCompetencia" class="control-label">Competencias:</label> <select
+									class="form-control" name="mesCompetencia" id="mesCompetencia" >
+									<option th:each="MesCompetencia : ${AllMesCompetencia}"
+										th:value="${MesCompetencia}" th:text="${MesCompetencia.descricao}"></option>
+								</select>
+							</div>
+							<div class="col-md-2">
+							<label for="dataVencimento" class="control-label">Data Vencimento:</label>
+								<input type="text" class="form-control" id="dataVencimento" placeholder="Informe a Data"
+									data-provide="datepicker"
+									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+									data-date-autoclose="true" data-date-today-highlight="true"
+									data-date-orientation="bottom" name="dataVencimento"/>
+							</div>
+							<div class="col-md-2">
+							<label for="dataPagamento" class="control-label">Data pagamento:</label>
+								<input type="text" class="form-control" id="dataPagamento" placeholder="Informe a Data"
+									data-provide="datepicker"
+									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+									data-date-autoclose="true" data-date-today-highlight="true"
+									data-date-orientation="bottom"  name="dataPagamento"/>
+							</div>
+							<div class="col-md-2">
+								<label for="valorParcela" class="control-label">Valor:</label>
+								<div class="input-group">
+								<div class="input-group-addon">R$</div>
+								<input type="text" class="form-control js-moeda" id="valorParcela" name="valorParcela"/></div>
+							</div>										
+							<div class="col-md-2">
+								<label for="status" class="control-label">Status:</label> <select
+									class="form-control" name="status" id="status" >
+									<option th:each="Status : ${AllStatus}"
+										th:value="${Status}" th:text="${Status.descricao}"></option>
+								</select>
+							</div>
+							<div class="col-md-2">
+								<label for="numeroDocumento" class="control-label">Número Documento:</label>
+								<input type="number" class="form-control" id="numeroDocumento" name="numeroDocumento"/>
+							</div>
+							<div class="col-md-4">
+								<label for="notaFiscalNF" class="control-label">NFe:</label>
+								<input type="text" class="form-control" id="notaFiscalNF" name="notaFiscalNF"/>
+							</div>
+							<div class="col-md-4">
+								<label for="pessoa" class="control-label">Responsavel:</label>
+								<select
+									class="form-control" name="pessoa" id="pessoa">
+									<option th:each="Pessoas : ${ListPessoas}"
+									th:value="${Pessoas.codigo}" th:text="${Pessoas.nomePessoa}"></option>
+								</select>
+							</div>
+														
+							
+						</div>
+						
+						
+						<div class="form-group">
+							<div class="col-md-10">
+								<button type="submit" class="btn btn-primary">Salvar</button>
+								<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+							</div>
+						</div>					
+				</div>
+	    	</div>
+    	</form>
+
+		
+		
+
+</div>
+
+<div class="container-fluid">
+
+
+</div>
+
+</section>
+</body>
+</html>
