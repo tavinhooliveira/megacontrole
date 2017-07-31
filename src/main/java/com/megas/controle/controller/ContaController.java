@@ -33,7 +33,7 @@ public class ContaController {
 
 private static final String CADASTROCONTA = "/pages/cadastro/CadastroConta";
 private static final String PESQUISARCONTA = "/pages/pesquisa/PesquisarConta";
-private static final String DETALHE_CONTA_VIEW = "/pages/relatorio/DetalheConta";
+private static final String DETALHE_CONTA_VIEW = "/pages/detalhes/DetalheConta";
 
 @Autowired
 private Contas contas;

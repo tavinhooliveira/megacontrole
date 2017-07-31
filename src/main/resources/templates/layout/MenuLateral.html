@@ -26,18 +26,15 @@
 					
 					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a th:href="@{/controles/pessoa}"><i class="glyphicon glyphicon-user"></i><span>Pessoa</span></a>
-					</li>
-					
-					<!--  
-					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a th:href="@{/controles/fornecedor}"><i class="glyphicon glyphicon-lock"></i><span>Fornecedor</span></a>
-					</li>
-					-->
-					
+					</li>		
+					 	
 					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a th:href="@{/controles/categoria}"><i class="glyphicon glyphicon-tag"></i><span>Categorias</span></a>
 					</li>
 					
+					<li class="aw-menu__item" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/controles/}"><i class="glyphicon glyphicon-book"></i><span>Relatórios</span></a>
+					</li>					
 							
 					
 		
