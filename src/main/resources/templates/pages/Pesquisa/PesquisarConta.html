@@ -65,7 +65,8 @@
 		   					
 		   					<td id="CT_descricao" 
 		   					class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
-							title="Editar" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></a>
+							th:title="|${conta.pessoa.nomePessoa}|"
+							rel="tooltip" data-placement="top" th:text="${conta.descricao}"></a>
 								<div class="tdInfoDetalhes infoDetalhesResponsivo">
 									<small th:text="|Vencimento: ${{conta.dataVencimento}} - |"></small>										
 									<small th:text="|R$: ${{conta.valorConta}} - |"></small>										
