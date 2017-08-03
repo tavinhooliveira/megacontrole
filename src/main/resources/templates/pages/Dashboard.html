@@ -123,10 +123,7 @@
 		
 		<div class="col-md-6" id="BoxValorTotal">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<label class="text-center text-success">Total</label>
-				</div>
-				<div class="panel-body">
+				<div class="panel-body mg-padding10">
 					<div class="col-md-8">
 						<i class="pull-left fa fa-signal fa-3x "></i>
 						<h3 >Valor Total
@@ -157,25 +154,19 @@
 					</blockquote>	
 				
 				</div>
-				<a th:href="@{/controles}">
-				<div class="panel-footer">
-					<span class="pull-left">View Details</span> <span
-						class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-					<div class="clearfix"></div>
-				</div>
-				</a>
+
 			</div>
 		</div>
 		
 <div class="col-md-3">
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="mg-padding10">
 			<label class="text-center text-success">Vencimentos para Hoje</label>
 		</div>
 
 		<div class="panel-body">
 			<div class="table-responsive">
-				<table id="tddash" class="table table-hover">
+				<table id="tddash" class="table table-hover table-striped">
 
 					<tbody>
 
@@ -208,25 +199,18 @@
 					th:text="|Total: ${{contaVencimentoAtrasadoQuant}}|"></span>
 			</div>
 		</div>
-		<a th:href="@{/controles/conta}">
-		<div class="panel-footer">
-			<span class="pull-left">View Details</span> <span
-				class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-			<div class="clearfix"></div>
-		</div>
-		</a>
 	</div>
 </div>
 		
 <div class="col-md-3">
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="mg-padding10">
 			<label class="text-center text-success">Vencimentos Atrasados </label>
 				</div>
 
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table id="tddash" class="table table-hover">
+						<table id="tddash" class="table table-hover table-striped">
 
 
 							<tbody>
@@ -260,13 +244,6 @@
 							th:text="|Total: ${{qtdPagamentosAtrasado}}|"></span>
 					</div>
 				</div>
-				<a href="#">              
-				<div class="panel-footer">
-					<span class="pull-left">View Details</span> <span
-						class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-					<div class="clearfix"></div>
-				</div>
-				</a>
 			</div>
 		</div>
 	</div>

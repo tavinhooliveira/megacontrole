@@ -70,24 +70,23 @@
 .text-primary { color: #337ab7; margin: 4px !important;}
 
 
+/*   Box - Para ser usado em indicadores (dahboard) */
 
-
-
-/*------------------------------------------*\
-  Box
-  - Para ser usado em indicadores (dahboard)
-\*------------------------------------------*/
+.mg-padding10{padding: 10px;}
 
 .fa-5x { font-size: 5em; color: #5cb85c; }
 .fa-3x { font-size: 3em; color: #5cb85c; }
 
 .sub-toral{padding: 5px;}
 
-.panel-dasb-bloco {
-    border-color: #e6e6e6;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+.panel-dasb-bloco {border-color: #e6e6e6; border-radius: 2px; -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05); box-shadow: 0 1px 1px rgba(0, 0, 0, .05);}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px solid #ddd !important;
+/*     border-bottom: 1px solid #ddd !important; */
 }
 
 .infoDetalhesResponsivo{display: none;}
@@ -128,13 +127,22 @@
 /*campos ocultados da grid responsiva*/
 #CT_fPagamento {display: none;}
 #CT_status {display: none;}
-#CT_pessoa {display: none;}
+#CT_Pessoa {display: none;}
 #CT_acao {display: none;}
 #CT_data {display: none;}
-#CT_pessoa {display: none;}
+
 
 #CT_valor {display: none;}
 #CT_codigo {font-size: 10px;}
+
+/* TBparcelas */
+#PCStatus{display: none;}
+#PCDataPagamento{display: none;}
+#PCMesCompetencia{display: none;}
+#PCValor{display: none;}
+#PCNumeroDocumento{display: none;}
+#PCNF{display: none;}
+#PCAcao{display: none;}
 
 .infoDetalhesResponsivo{display: block;}
 
@@ -191,13 +199,22 @@
 /*campos ocultados da grid responsiva*/
 #CT_fPagamento {display: none;}
 #CT_status {display: none;}
-#CT_pessoa {display: none;}
+#CT_Pessoa {display: none;}
 #CT_acao {display: none;}
 #CT_data {display: none;}
-#CT_pessoa {display: none;}
+
 
 #CT_valor {display: none;}
 #CT_codigo {font-size: 10px;}
+
+/* TBparcelas */
+#PCStatus{display: none;}
+#PCDataPagamento{display: none;}
+#PCMesCompetencia{display: none;}
+#PCValor{display: none;}
+#PCNumeroDocumento{display: none;}
+#PCNF{display: none;}
+#PCAcao{display: none;}
 
 .infoDetalhesResponsivo{display: block;}
 
@@ -261,13 +278,22 @@
 /*campos ocultados da grid responsiva*/
 #CT_fPagamento {display: none;}
 #CT_status {display: none;}
-#CT_pessoa {display: none;}
+#CT_Pessoa
 #CT_acao {display: none;}
 #CT_data {display: none;}
-#CT_pessoa {display: none;}
+
 
 #CT_valor {display: none;}
 #CT_codigo {font-size: 10px;}
+
+/* TBparcelas */
+#PCStatus{display: none;}
+#PCDataPagamento{display: none;}
+#PCMesCompetencia{display: none;}
+#PCValor{display: none;}
+#PCNumeroDocumento{display: none;}
+#PCNF{display: none;}
+#PCAcao{display: none;}
 
 .infoDetalhesResponsivo{display: block;}
 

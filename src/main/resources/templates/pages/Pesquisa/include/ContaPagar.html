@@ -34,7 +34,7 @@
 		   			<tbody>
 		   				<tr th:each="conta : ${contas}" th:if="${conta.tipoConta.descricao == 'Despesa'}"> 							   						   					 
 		   					<td id="CT_codigo" class="text-center" th:text="${conta.codigo}"></td>
-		   					<td id="CT_descricao" class="text-left "><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
+		   					<td id="CT_descricao" class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
 							th:title="|${conta.pessoa.nomePessoa}|" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></td>
 		   					<td id="CT_Pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
 		   					<td id="CT_valor" class="text-left" th:text="|R$ ${{conta.valorConta}}|"></td>

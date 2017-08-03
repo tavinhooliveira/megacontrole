@@ -43,7 +43,7 @@
 		   					<th id="CT_data" class="text-left">Vencimento</th>
 		   					<th id="CT_fPagamento" class="text-left">F.Pagamento</th>
 		   					<th id="CT_status" class="text-left">Status</th>
-		   					<th id="CT_pessoa" class="text-left">Atruiduido a:</th>
+		   					<th id="CT_Pessoa" class="text-left">Atruiduido a:</th>
 		   					<th id="CT_acao" class="text-center col-md-1" sec:authorize="hasRole('ROLE_ADMIN')">Ação</th>
 		   					
 		   						   				
@@ -79,7 +79,7 @@
 		   					<td id="CT_data" class="text-left" th:text="${{conta.dataVencimento}}"></td>
 		   					<td id="CT_fPagamento" class="text-center"><mark class="text-center" th:text="${{conta.formaPagamento.descricao}}"></mark></td>		   					
 		   					<td id="CT_status" class="text-center"><span class="text-center label" th:text="${conta.status.descricao}" th:classappend="${conta.pendente ? 'label-warning' :  conta.pago ? 'label-success'  : 'label-danger'}"></span></td>
-		   					<td id="CT_pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
+		   					<td id="CT_Pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
 		   					<td id="CT_acao" class="text-center" sec:authorize="hasRole('ROLE_ADMIN')">
 		   						<a class="btn btn-link btn-xs" th:href="@{/controles/conta/{codigo}(codigo=${conta.codigo})}"										
 		   							title="Editar" rel="tooltip" data-placement="top">

@@ -174,7 +174,7 @@
 		<thead class="table-bordered alert detalhes">
 			<tr>
 				<th id="PCDescricao" class="text-left ">Parcelas</th>
-				<th id="PCDataVencimento" class="text-center col-md-1">Dta.Vencimento</th>
+				<th id="PCDataVencimento" class="text-center col-md-1">Vencimento</th>
 				<th id="PCStatus" class="text-center col-md-1">Status</th>
 				<th id="PCDataPagamento" class="text-left col-md-1">Dta.Pagamento</th>
 				<th id="PCMesCompetencia" class="text-center col-md-1">Competência</th>
@@ -186,14 +186,17 @@
 		</thead>
 		<tr th:each="parcelas : ${parcelas}" th:if="${conta.codigo == parcelas.conta.codigo}">
    					<td id="PCDescricao"><a class="text-left" th:text=" ${{parcelas.descricaoParcela}} " th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}"></a> </td>
-   					<td id="PCDataVencimento" class="text-center" th:text=" ${{parcelas.dataVencimento}}" ></td>
+   					
+   					<td id="PCDataVencimento"> <b class="" th:text=" ${{parcelas.dataVencimento}}" ></b>   																
+							<small class="label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></small>
+   					</td>
    					<td id="PCStatus" class="text-center"><span class="text-center label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></span></td>
 		   			<td id="PCDataPagamento" class="text-center" th:text=" ${{parcelas.dataPagamento}}" ></td>
    					<td id="PCMesCompetencia" class="text-center" th:text=" ${parcelas.mesCompetencia}" ></td>
    					<td id="PCValor" class="text-left" th:text=" ${{parcelas.valorParcela}} "> </td>
    					<td id="PCNumeroDocumento" class="text-left" th:text=" ${{parcelas.numeroDocumento}} "> </td>
    					<td id="PCNF" class="text-left" th:text=" ${{parcelas.notaFiscalNF}} "> </td>
-   					<td id="PCacao" class="text-center">
+   					<td id="PCAcao" class="text-center">
    						<a class="btn btn-link btn-xs" th:href="@{/controles/parcela/delete/{codigo}(codigo=${parcelas.codigo})}" 
    								title="Excluir" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-trash"></span>
    						</a>
