@@ -188,7 +188,10 @@
    					<td id="PCDescricao"><a class="text-left" th:text=" ${{parcelas.descricaoParcela}} " th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}"></a> </td>
    					
    					<td id="PCDataVencimento"> <b class="" th:text=" ${{parcelas.dataVencimento}}" ></b>   																
+						<span class="tdInfoDetalhes infoDetalhesResponsivo">
 							<small class="label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></small>
+   							<small id="modileDataPagamento" th:text=" ${{parcelas.dataPagamento}}" ></small>
+						</span>
    					</td>
    					<td id="PCStatus" class="text-center"><span class="text-center label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></span></td>
 		   			<td id="PCDataPagamento" class="text-center" th:text=" ${{parcelas.dataPagamento}}" ></td>
