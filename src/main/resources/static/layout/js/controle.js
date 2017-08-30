@@ -1,4 +1,15 @@
 
+///Função exportar para o excell
+$(document).ready(function () {
+        $("#btnExport").click(function () {
+            $("#example").battatech_excelexport({
+                containerid: "example"
+               , datatype: 'table'
+            });
+        });
+    });
+
+
 //Função busca rapida Dashboard
 $(function(){
 	$('#filter').keyup(function () {
@@ -11,7 +22,6 @@ $(function(){
 		
 	})	
 	}(jQuery));
-
 
 
 //Funcao SHOW area

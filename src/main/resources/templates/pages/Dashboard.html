@@ -131,17 +131,18 @@
 						</h3>
 					</div>
 					<blockquote class="alert alert-success col-md-12">
-						<div>
+						<div id="dash_pg">
 							<i class="glyphicon glyphicon-barcode"></i> Pagamentos: <span th:if="${not valorContasDespesa.empty}"
 								class="pull-right" th:text="| R$ ${{valorContasDespesa}}|"></span>
 						</div>
-						<div>
+						
+						<div id="dash_rc">
 							<i class="glyphicon glyphicon-piggy-bank"></i>
 							<span> Recebimentos: </span> 
 							<span class="pull-right" th:text="| R$ ${{valorContasReceita}}|"></span>
 						</div>
 					</blockquote>
-					
+					<div style="clear: both;"></div>
 					<blockquote class="alert alert-success col-md-12">
 						<div class="">
 							<i class="glyphicon glyphicon-indent-right"></i>
