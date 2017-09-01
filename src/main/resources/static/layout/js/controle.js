@@ -7,7 +7,7 @@ $(document).ready(function () {
                , datatype: 'table'
             });
         });
-    });
+ });
 
 
 //Função busca rapida Dashboard
@@ -24,7 +24,7 @@ $(function(){
 	}(jQuery));
 
 
-//Funcao SHOW area
+//Funcao SHOW area parcelas
 $(document).ready(function(){
 	$("a.btn_show").click(function(){
 		$("div.show_parcela").toggle();
@@ -55,8 +55,82 @@ $(function(){
 });
 
 
+//Funcao buscarMultiplosCampos comboBox Pagamentos F.Pagamento
+$(function(){
+    $("#txtColuna6").on('change', function(){       
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function(){
+            if($(this).text().toUpperCase().indexOf(valor) < 0){
+                $(this).parent().hide();
+            }
+        });
+    });
+ 
+});
+
+//Funcao buscarMultiplosCampos comboBox Pagamentos status
+$(function(){
+    $("#txtColuna7").on('change', function(){       
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function(){
+            if($(this).text().toUpperCase().indexOf(valor) < 0){
+                $(this).parent().hide();
+            }
+        });
+    });
+ 
+});
+
+//Funcao buscarMultiplosCampos comboBox Recebimentos F.Pagamento
+$(function(){
+    $("#txtColuna8").on('change', function(){       
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function(){
+            if($(this).text().toUpperCase().indexOf(valor) < 0){
+                $(this).parent().hide();
+            }
+        });
+    });
+ 
+});
+
+//Funcao buscarMultiplosCampos comboBox Pagamentos status
+$(function(){
+    $("#txtColuna9").on('change', function(){       
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function(){
+            if($(this).text().toUpperCase().indexOf(valor) < 0){
+                $(this).parent().hide();
+            }
+        });
+    });
+ 
+});
+
+
+/*Verifiar Campo status para habilitar o campo dataPagamento*/
+$("#status").ready(function(){
+	var status = $(this).find('#status').val();
+        if(status == 'PAGO') {
+           $(".PAGO").show();
+        }else{
+           $(".PAGO").hide();
+        }
+});
+
 //Funcao ShowHide ComboSelected Status
-$(".PAGO").hide();
 $("#status").on('change', function(){
     var $this = $(this).val();
     if($this != 0) {
@@ -69,9 +143,20 @@ $("#status").on('change', function(){
 });
 
 
+/*Verifiar ComboSelected FormaPagamento para habilitar o campo vencimento ou parcelas*/
+$("#formaPagamento").ready(function(){
+	var fpagamento = $(this).find('#formaPagamento').val();
+        if(fpagamento == 'PARCELADO') {
+        	 $(".PARCELADO").show();
+             $(".showVencimento").hide();
+        }else{
+        	$(".PARCELADO").hide();
+            $(".showVencimento").show();
+        }
+});
+
+
 //Funcao ShowHide ComboSelected FormaPagamento
-$(".PARCELADO").hide();
-$(".showVencimento").hide();
 $("#formaPagamento").on('change', function(){
     var $this = $(this).val();
     if($this != 0) {
@@ -193,7 +278,4 @@ $('#cadastroPessoaModal').on('shown.bs.modal', function () {
   $('#nomePessoa').focus()
 });
 
-$('#cadastroPessoaModal').on('shown.bs.modal', function () {
-  $('#nomePessoa').focus()
-});
 

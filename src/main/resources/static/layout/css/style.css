@@ -99,6 +99,9 @@
 #dash_rc{border-bottom: 1px dashed #adadad}
 
 
+#btnExport{margin-top: -4px;}
+
+
 /* -----------------------------------------------[Configuração Responsiva]------------------------------------------------- */
 /*Iphone 5 320px*/
 @media (min-width : 480px) and (max-width: 768px) {
@@ -165,7 +168,7 @@
 .table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
     border: 0px solid #ddd !important;}
 
-
+#btnExport{display: none;}
 
 
 }
@@ -247,7 +250,7 @@
 .table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
     border: 0px solid #ddd !important;}
     
-
+#btnExport{display: none;}
 
 }
 /*End*/
@@ -318,7 +321,7 @@
 
 	
 
-
+#btnExport{display: none;}
 
 
 }/*End*/

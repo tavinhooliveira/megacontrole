@@ -23,41 +23,64 @@
 
 <div class="container-fluid">
 
-
-<div class="col-md-12 alert detalhes ">
+<div class="alert detalhes">
+<div class="row">
+<div class="form-group">
 			<div class="col-md-2">
 				<label>Código Conta: </label><span class="text-primary" th:text="${conta.codigo}"></span>
 			</div>
-			<div class="col-md-6">
-				<label>Descrição: </label><span class="text-primary text-uppercase" th:text="${conta.descricao}"></span>
-			</div>			
-			<div class="col-md-3 ">
+			<div class="col-md-2 ">
 				<label>Status: </label><span class="text-center label" th:text="${conta.status.descricao}"
 				 th:classappend="${conta.pendente ? 'label-warning' : 'label-success'}"></span></td>
 			</div>
 			<div class="col-md-2">
 				<label>Valor: </label><span class="text-primary" th:text="|R$: ${{conta.valorConta}}|"></span>
 			</div>
-			<div class="col-md-3">
-				<label>Forma de Pagamento: </label><span class="text-primary" th:text="${conta.formaPagamento.descricao}"></span>
-			</div>
-			<div class="col-md-3">
-				<label>Parcelas: </label>
-				<span class="text-primary" th:text="${conta.totalParcela}"></span>					
-			</div>
-			<div class="col-md-3">
-				<label>Parelas: </label><span class="text-primary" th:text="|R$: ${{valorPacelaCont}}|"></span>
-			</div>
+			<div class="col-md-6">
+				<label>Descrição: </label><span class="text-primary text-uppercase" th:text="${conta.descricao}"></span>
+			</div>			
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group">
 			<div class="col-md-2">
 				<label>Categoria: </label><span class="text-primary" th:text="${conta.categoria.nomeCategoraia}"></span>
 			</div>
-			
-			<div class="col-md-6">
+			<div class="col-md-2">
+				<label>F. Pagamento: </label><span class="text-primary" th:text="${conta.formaPagamento.descricao}"></span>
+			</div>
+			<div class="col-md-2" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
+				<label>Parcelas: </label>
+				<span class="text-primary" th:text="${conta.totalParcela}"></span>					
+			</div>
+			<div class="col-md-3" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
+				<label>Valor Parelado: </label><span class="text-primary" th:text="|R$: ${{valorPacelaCont}}|"></span>
+			</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group">
+			<div class="col-md-4">
 				<label>Atribuido a: </label><span class="text-primary text-uppercase" th:text="${conta.pessoa.nomePessoa}"></span>
 			</div>
-			<div class="col-md-3">
-				<label>Data Vencimento: </label><span class="text-primary" th:text="${{conta.dataVencimento}}"></span>
+			<div class="col-md-2" th:if="${(conta.formaPagamento.descricao == 'Avista')}">
+				<label>Vencimento: </label><span class="text-primary" th:text="${{conta.dataVencimento}}"></span>
 			</div>
+			<div class="col-md-3" th:if="${(conta.status.descricao == 'Pago')}">
+				<label>Data Pagamento: </label><span class="text-primary" th:text="${{conta.dataPagamento}}"></span>
+			</div>
+</div>
+</div>
+
+
+</div>
+
+
+			
+			
 			
 
 		
