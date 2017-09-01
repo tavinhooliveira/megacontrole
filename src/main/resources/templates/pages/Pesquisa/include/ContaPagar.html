@@ -39,16 +39,14 @@
 		   					<option value="Atrasado">Atrasado</option>
 		   					</select>
 		   					</th>
-<!-- 		   					<th id="CT_status" class="text-left col-md-1">Status -->
-<!-- 		   					<input type="text" class="form-control" id="txtColuna7"/> -->
-<!-- 		   					</th> -->
 		   					<th id="CT_acao" class="text-center col-md-1">Ação</th>		   							   						   				
 		   				</tr>
 
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="conta : ${contas}" th:if="${conta.tipoConta.descricao == 'Despesa'}"> 							   						   					 
+		   				<tr th:each="conta : ${contas}" th:if="${conta.tipoConta.descricao == 'Despesa'}">        					
+									   											   						   					 
 		   					<td id="CT_codigo" class="text-center" th:text="${conta.codigo}"></td>
 		   					<td id="CT_descricao" class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
 							th:title="|${conta.pessoa.nomePessoa}|" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></td>
@@ -70,9 +68,17 @@
 		   						</a>		   						  							   						
 		   					</td>
 		   				</tr>
+		   				
 		   			</tbody>
 		   		</table>
 		   	</div>
+		   	
+		   	
+<!-- 		   	<span th:each="conta : ${contas}"> -->
+<!-- 		   	<span th:text="${conta.length}" ></span> -->
+		   	
+		   	
+		   	
 	   	</div>
                                         
        	</div>
@@ -80,26 +86,6 @@
 </div>
 <div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
 </section>
-<script type="text/javascript">
-$(function(){
-    $("#tabela input").keyup(function(){       
-        var index = $(this).parent().index();
-        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
-        var valor = $(this).val().toUpperCase();
-        $("#tabela tbody tr").show();
-        $(nth).each(function(){
-            if($(this).text().toUpperCase().indexOf(valor) < 0){
-                $(this).parent().hide();
-            }
-        });
-    });
- 
-    $("#tabela input").blur(function(){
-        $(this).val("");
-    });
-});
-
-</script>
 
 </body>
 </html>

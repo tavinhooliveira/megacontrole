@@ -23,6 +23,7 @@
 
 <div class="container-fluid">
 
+
 <div class="alert detalhes">
 <div class="row">
 <div class="form-group">
@@ -58,6 +59,7 @@
 			<div class="col-md-3" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
 				<label>Valor Parelado: </label><span class="text-primary" th:text="|R$: ${{valorPacelaCont}}|"></span>
 			</div>
+			
 </div>
 </div>
 
@@ -69,8 +71,11 @@
 			<div class="col-md-2" th:if="${(conta.formaPagamento.descricao == 'Avista')}">
 				<label>Vencimento: </label><span class="text-primary" th:text="${{conta.dataVencimento}}"></span>
 			</div>
-			<div class="col-md-3" th:if="${(conta.status.descricao == 'Pago')}">
-				<label>Data Pagamento: </label><span class="text-primary" th:text="${{conta.dataPagamento}}"></span>
+			<div class="col-md-2" th:if="${(conta.status.descricao == 'Pago')}">
+				<label>Pagamento: </label><span class="text-primary" th:text="${{conta.dataPagamento}}"></span>
+			</div>
+			<div class="col-md-3">
+				<label>Tipo: </label><span class="text-primary" th:text="${{conta.tipoConta.descricao}}"></span>
 			</div>
 </div>
 </div>
