@@ -31,10 +31,10 @@
 										
 										<div class="sub-toral">
 											<div class="tdInfoDetalhes">
-												Pagamentos: <i th:text="${{totalContaDespesa}}"></i>
+												<span class="pull-right"> Pagamentos: <meter th:value="|${{totalContaDespesa}}|" th:min="0" th:max="|${totalContas}|" low="2" high="4"></meter><i th:text="| ${{totalContaDespesa}}|"></i></span>
 											</div>
 											<div class="tdInfoDetalhes">
-												Recebimentos: <i th:text="${{totalContaReceber}}">
+												<span class="pull-right"> Recebimentos: <meter th:value="|${{totalContaReceber}}|" th:min="0" th:max="|${totalContas}|" low="2" high="4"></meter> <i th:text="${{totalContaReceber}}"></i></span>
 											</div>											
 
 										</div>
@@ -133,13 +133,13 @@
 					<blockquote class="alert alert-success col-md-12">
 						<div id="dash_pg">
 							<i class="glyphicon glyphicon-barcode"></i> Pagamentos: <span th:if="${not valorContasDespesa.empty}"
-								class="pull-right" th:text="| R$ ${{valorContasDespesa}}|"></span>
+								class="badge pull-right" th:text="| R$ ${{valorContasDespesa}}|"></span>
 						</div>
 						
 						<div id="dash_rc">
 							<i class="glyphicon glyphicon-piggy-bank"></i>
 							<span> Recebimentos: </span> 
-							<span class="pull-right" th:text="| R$ ${{valorContasReceita}}|"></span>
+							<span class="badge pull-right" th:text="| R$ ${{valorContasReceita}}|"></span>
 						</div>
 					</blockquote>
 					<div style="clear: both;"></div>
@@ -147,8 +147,9 @@
 						<div class="">
 							<i class="glyphicon glyphicon-indent-right"></i>
 							<span>Parcelamentos:</span> 
-							<span class="" th:text="|${{valorPacelaCont}}|"></span>
-							<span class="pull-right" th:text="|R$: ${{valorPacelaQTDA}}|"></span>
+							<span class="badge" th:text="|${{valorPacelaCont}}|"></span>
+							
+							<span class="badge pull-right" th:text="|R$: ${{valorPacelaQTDA}}|"></span>
 							
 							
 						</div>
@@ -198,6 +199,10 @@
 					<span class="text-default pull-left" th:if="${! contaVencimentohoje.empty}">Ultimas 3 contas</span>
 					<span id="pfCodigo" class="text-center badge pull-right" th:if="${! contaVencimentohoje.empty}"
 					th:text="|Total: ${{contaVencimentoAtrasadoQuant}}|"></span>
+					
+					<div>
+						<progress th:value="|${{contaVencimentoAtrasadoQuant}}|" th:max="|${totalContas}|"></progress>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -243,11 +248,29 @@
 						<span class="text-default pull-left" th:if="${! pagamentosAtrasados.empty}">Ultimas 3 contas</span>
 						<span id="pfCodigo" class="text-center badge pull-right" th:if="${! pagamentosAtrasados.empty}"
 							th:text="|Total: ${{qtdPagamentosAtrasado}}|"></span>
+							
+							<div>
+							<progress th:value="|${{qtdPagamentosAtrasado}}|" th:max="|${totalContas}|"></progress>
+							</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<div class="row">
+<div class="panel-body">
+
+
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<!--   <strong id="jsHoraAtul" th:replace="layout/DataHora :: layout-data-hora"></strong> -->
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+</div>
+</div>
+
+	
 </div>
 		
 	</section>
