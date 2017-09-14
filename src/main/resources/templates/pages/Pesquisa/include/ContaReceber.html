@@ -14,7 +14,8 @@
                
                 <div class="panel-body">
 	   		<div class="table-responsive">
-		   		<table id="tabela" class="table table-striped table-bordered dt-responsive table-hover" >
+		   		<table id="tabela" class=" example table table-striped table-bordered dt-responsive table-hover" 
+		   		data-toggle="table">
 		   			<thead>
 		   				<tr>
 		   					<th id="CT_codigo" class="text-center col-md-1">Código<input type="text" class="form-control" id="txtColuna1"/></th>
@@ -47,7 +48,7 @@
 		   				<tr th:each="conta : ${contas}" th:if="${conta.tipoConta.descricao == 'Receita'}"> 							   						   					 
 		   					<td id="CT_codigo" class="text-center" th:text="${conta.codigo}"></td>
 		   					<td id="CT_descricao" class="text-left"><a th:href="@{/controles/conta/detalhes/{codigo}(codigo=${conta.codigo})}" 
-							th:title="|${conta.pessoa.nomePessoa}|" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></td>
+							th:title="|${conta.pessoa.nomePessoa}|" rel="tooltip" data-placement="top" th:text="${conta.descricao}"></a></td>
 		   					<td id="CT_Pessoa" class="text-left" th:text="${conta.pessoa.nomePessoa}"></td>
 		   					<td id="CT_valor" class="text-left" th:text="|R$ ${{conta.valorConta}}|"></td>
 		   					<td id="CT_data" class="text-left" th:text="${{conta.dataVencimento}}"></td>

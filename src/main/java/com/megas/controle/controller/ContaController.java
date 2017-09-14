@@ -130,7 +130,7 @@ private Parcelas parcelas;
 		List<Parcela> allParcelas = parcelas.findAll();
 		mv.addObject("parcelas", allParcelas);
 		mv.addObject(conta);
-		List<Parcela> allParcelasQTA = parcelas.findByValorParcelaQTA();
+		List<Parcela> allParcelasQTA = parcelas.findByValorContaParcelada();
 		mv.addObject("valorPacelaCont", allParcelasQTA);
 		
 		return mv;

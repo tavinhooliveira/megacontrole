@@ -1,248 +1,287 @@
 <!DOCTYPE html>
-<html lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml" 
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout-padrao}">
-	
+
 <body>
-<section layout:fragment="conteudo">
+	<section layout:fragment="conteudo">
 
-<div class="panel panel-primary">		
-		<div class="panel-heading">
-			<div class="clearfix">
-					<h1 class="panel-title label alert-success"><span th:text="${conta.tipoConta.descricao}"></span></h1>
-					<a class="btn btn-success pull-right menu-superior" th:href="@{/controles/conta/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
-						class="glyphicon glyphicon-plus-sign"></span>Novo</a>
-
-					<a class="btn btn-success pull-right " th:href="@{/controles/conta}" sec:authorize="hasRole('ROLE_USER')"><span
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title label alert-success">
+						<span th:text="${conta.tipoConta.descricao}"></span>
+					</h1>
+					<a class="btn btn-success pull-right menu-superior"
+						th:href="@{/controles/conta/novo}"
+						sec:authorize="hasRole('ROLE_ADMIN')"><span
+						class="glyphicon glyphicon-plus-sign"></span>Novo</a> <a
+						class="btn btn-success pull-right " th:href="@{/controles/conta}"
+						sec:authorize="hasRole('ROLE_USER')"><span
 						class="glyphicon glyphicon-zoom-in"></span>Pesquisar</a>
+				</div>
 			</div>
 		</div>
-</div>
 
-<div class="container-fluid">
-
-
-<div class="alert detalhes">
-<div class="row">
-<div class="form-group">
-			<div class="col-md-2">
-				<label>Código Conta: </label><span class="text-primary" th:text="${conta.codigo}"></span>
-			</div>
-			<div class="col-md-2 ">
-				<label>Status: </label><span class="text-center label" th:text="${conta.status.descricao}"
-				 th:classappend="${conta.pendente ? 'label-warning' : 'label-success'}"></span></td>
-			</div>
-			<div class="col-md-2">
-				<label>Valor: </label><span class="text-primary" th:text="|R$: ${{conta.valorConta}}|"></span>
-			</div>
-			<div class="col-md-6">
-				<label>Descrição: </label><span class="text-primary text-uppercase" th:text="${conta.descricao}"></span>
-			</div>			
-
-</div>
-</div>
-
-<div class="row">
-<div class="form-group">
-			<div class="col-md-2">
-				<label>Categoria: </label><span class="text-primary" th:text="${conta.categoria.nomeCategoraia}"></span>
-			</div>
-			<div class="col-md-2">
-				<label>F. Pagamento: </label><span class="text-primary" th:text="${conta.formaPagamento.descricao}"></span>
-			</div>
-			<div class="col-md-2" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
-				<label>Parcelas: </label>
-				<span class="text-primary" th:text="${conta.totalParcela}"></span>					
-			</div>
-			<div class="col-md-3" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
-				<label>Valor Parelado: </label><span class="text-primary" th:text="|R$: ${{valorPacelaCont}}|"></span>
-			</div>
-			
-</div>
-</div>
-
-<div class="row">
-<div class="form-group">
-			<div class="col-md-4">
-				<label>Atribuido a: </label><span class="text-primary text-uppercase" th:text="${conta.pessoa.nomePessoa}"></span>
-			</div>
-			<div class="col-md-2" th:if="${(conta.formaPagamento.descricao == 'Avista')}">
-				<label>Vencimento: </label><span class="text-primary" th:text="${{conta.dataVencimento}}"></span>
-			</div>
-			<div class="col-md-2" th:if="${(conta.status.descricao == 'Pago')}">
-				<label>Pagamento: </label><span class="text-primary" th:text="${{conta.dataPagamento}}"></span>
-			</div>
-			<div class="col-md-3">
-				<label>Tipo: </label><span class="text-primary" th:text="${{conta.tipoConta.descricao}}"></span>
-			</div>
-</div>
-</div>
+		<div class="container-fluid">
 
 
-</div>
+			<div class="alert detalhes">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-2">
+							<label>Código Conta: </label><span class="text-primary"
+								th:text="${conta.codigo}"></span>
+						</div>
+						<div class="col-md-2 ">
+							<label>Status: </label><span class="text-center label"
+								th:text="${conta.status.descricao}"
+								th:classappend="${conta.pendente ? 'label-warning' : 'label-success'}"></span>
+							</td>
+						</div>
+						<div class="col-md-2">
+							<label>Valor: </label><span class="text-primary"
+								th:text="|R$: ${{conta.valorConta}}|"></span>
+						</div>
+						<div class="col-md-6">
+							<label>Descrição: </label><span
+								class="text-primary text-uppercase" th:text="${conta.descricao}"></span>
+						</div>
 
+					</div>
+				</div>
 
-			
-			
-			
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-2">
+							<label>Categoria: </label><span class="text-primary"
+								th:text="${conta.categoria.nomeCategoraia}"></span>
+						</div>
+						<div class="col-md-2">
+							<label>F. Pagamento: </label><span class="text-primary"
+								th:text="${conta.formaPagamento.descricao}"></span>
+						</div>
+						<div class="col-md-2"
+							th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
+							<label>Parcelas: </label> <span class="text-primary"
+								th:text="${conta.totalParcela}"></span>
+						</div>
+						<div class="col-md-3"
+							th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
+							<label>Valor Parelado: </label><span class="text-primary"
+								th:text="|R$: ${{valorPacelaCont}}|"></span>
+						</div>
 
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<div class="col-md-4">
+							<label>Atribuido a: </label><span
+								class="text-primary text-uppercase"
+								th:text="${conta.pessoa.nomePessoa}"></span>
+						</div>
+						<div class="col-md-2"
+							th:if="${(conta.formaPagamento.descricao == 'Avista')}">
+							<label>Vencimento: </label><span class="text-primary"
+								th:text="${{conta.dataVencimento}}"></span>
+						</div>
+						<div class="col-md-2"
+							th:if="${(conta.status.descricao == 'Pago')}">
+							<label>Pagamento: </label><span class="text-primary"
+								th:text="${{conta.dataPagamento}}"></span>
+						</div>
+						<div class="col-md-3">
+							<label>Tipo: </label><span class="text-primary"
+								th:text="${{conta.tipoConta.descricao}}"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	</div>
 		
-</div>
-	<span th:replace="/layout/MensagemGeral :: alert"></span>
-	
-	
-
-		
-	<div id="aw-graph-box" class="col-md-12 pull-left btn_detalhes" >						
+		<span th:replace="/layout/MensagemGeral :: alert"></span>
+<div class="row container">
+		<div id="aw-graph-box" class=" pull-left btn_detalhes">
 			<!--Editar-->
 			<a class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')"
 				th:href="@{/controles/conta/{codigo}(codigo=${conta.codigo})}"
-				title="Editar"  rel="tooltip" data-placement="bottom">
-				<span class="glyphicon glyphicon-pencil"></span>
-			</a>		
+				title="Editar" rel="tooltip" data-placement="bottom"> <span
+				class="glyphicon glyphicon-pencil"></span>
+			</a>
 			<!--Excluir-->
 			<a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"
 				data-toggle="modal" data-target="#confirmacaoExclusaoModal"
 				th:attr="data-codigo=${conta.codigo}, data-descricao=${conta.descricao}"
-				title="Excluir"  rel="tooltip" data-placement="bottom"> <span
-					class="glyphicon glyphicon-trash"></span>
-			</a>						
-			<a th:if="${(conta.formaPagamento.descricao == 'Parcelado')}" 
-				class="btn btn-success btn_show" sec:authorize="hasRole('ROLE_ADMIN')" 
-				title=" + Parcelas"  rel="tooltip" data-placement="bottom">
-				<span class="glyphicon glyphicon-tags"></span>
-			</a>	
-     </div>
-     
-      
-     
-  <div class="show_parcela" style="display: none;"> 
-    <form class="form-horizontal" method="post" th:action="@{/controles/parcela}" th:object="${parcela}">
-  	    	<div class="col-md-12 alert detalhes">
-		    	<div class="panel-body ">
-		    	
-		   			<input name='conta' th:value="${conta.codigo}" id="conta" readonly style="display: none;"/>
-		   				   					    							
-						<div class="form-group">					
+				title="Excluir" rel="tooltip" data-placement="bottom"> <span
+				class="glyphicon glyphicon-trash"></span>
+			</a>
+			<!--Parcela-->
+			<a th:if="${(conta.formaPagamento.descricao == 'Parcelado')}"
+				class="btn btn-success btn_show"
+				sec:authorize="hasRole('ROLE_ADMIN')" title=" + Parcelas"
+				rel="tooltip" data-placement="bottom"> <span
+				class="glyphicon glyphicon-tags"></span>
+			</a>
+		</div>
+</div>
+
+
+
+		<div class="show_parcela container col-md-12" style="display: none;">
+			<form class="form-horizontal" method="post"
+				th:action="@{/controles/parcela}" th:object="${parcela}">
+				<div class=" alert detalhes ">
+					<div class="panel-body ">
+
+						<input name='conta' th:value="${conta.codigo}" id="conta" readonly
+							style="display: none;" />
+
+						<div class="form-group">
 							<div class="col-md-4">
-								<label for="descricaoParcela" class="control-label">Descrição da Parcela:</label>
-								<input type="text" class="form-control" id="descricaoParcela" name="descricaoParcela"/>
+								<label for="descricaoParcela" class="control-label">Descrição
+									da Parcela:</label> <input type="text" class="form-control"
+									id="descricaoParcela" name="descricaoParcela" />
 							</div>
-								
+
 							<div class="col-md-2">
-								<label for="mesCompetencia" class="control-label">Competencias:</label> <select
-									class="form-control" name="mesCompetencia" id="mesCompetencia" >
+								<label for="mesCompetencia" class="control-label">Competencias:</label>
+								<select class="form-control" name="mesCompetencia"
+									id="mesCompetencia">
 									<option th:each="MesCompetencia : ${AllMesCompetencia}"
-										th:value="${MesCompetencia}" th:text="${MesCompetencia.descricao}"></option>
+										th:value="${MesCompetencia}"
+										th:text="${MesCompetencia.descricao}"></option>
 								</select>
 							</div>
 							<div class="col-md-2">
-							<label for="dataVencimento" class="control-label">Data Vencimento:</label>
-								<input type="text" class="form-control" id="dataVencimento" placeholder="Informe a Data"
-									data-provide="datepicker"
-									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
-									data-date-autoclose="true" data-date-today-highlight="true"
-									data-date-orientation="bottom" name="dataVencimento"/>
+								<label for="dataVencimento" class="control-label">Data
+									Vencimento:</label> <input type="text" class="form-control"
+									id="dataVencimento" placeholder="Informe a Data"
+									data-provide="datepicker" data-date-format="dd/mm/yyyy"
+									data-date-language="pt-BR" data-date-autoclose="true"
+									data-date-today-highlight="true" data-date-orientation="bottom"
+									name="dataVencimento" />
 							</div>
 							<div class="col-md-2">
-							<label for="dataPagamento" class="control-label">Data pagamento:</label>
-								<input type="text" class="form-control" id="dataPagamento" placeholder="Informe a Data"
-									data-provide="datepicker"
-									data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
-									data-date-autoclose="true" data-date-today-highlight="true"
-									data-date-orientation="bottom"  name="dataPagamento"/>
+								<label for="dataPagamento" class="control-label">Data
+									pagamento:</label> <input type="text" class="form-control"
+									id="dataPagamento" placeholder="Informe a Data"
+									data-provide="datepicker" data-date-format="dd/mm/yyyy"
+									data-date-language="pt-BR" data-date-autoclose="true"
+									data-date-today-highlight="true" data-date-orientation="bottom"
+									name="dataPagamento" />
 							</div>
 							<div class="col-md-2">
 								<label for="valorParcela" class="control-label">Valor:</label>
 								<div class="input-group">
-								<div class="input-group-addon">R$</div>
-								<input type="text" class="form-control js-moeda" id="valorParcela" name="valorParcela"/></div>
-							</div>										
+									<div class="input-group-addon">R$</div>
+									<input type="text" class="form-control js-moeda"
+										id="valorParcela" name="valorParcela" />
+								</div>
+							</div>
 							<div class="col-md-2">
 								<label for="status" class="control-label">Status:</label> <select
-									class="form-control" name="status" id="status" >
-									<option th:each="Status : ${AllStatus}"
-										th:value="${Status}" th:text="${Status.descricao}"></option>
+									class="form-control" name="status" id="status">
+									<option th:each="Status : ${AllStatus}" th:value="${Status}"
+										th:text="${Status.descricao}"></option>
 								</select>
 							</div>
 							<div class="col-md-2">
-								<label for="numeroDocumento" class="control-label">Número Documento:</label>
-								<input type="number" class="form-control" id="numeroDocumento" name="numeroDocumento"/>
+								<label for="numeroDocumento" class="control-label">Número
+									Documento:</label> <input type="number" class="form-control"
+									id="numeroDocumento" name="numeroDocumento" />
 							</div>
 							<div class="col-md-4">
-								<label for="notaFiscalNF" class="control-label">NFe:</label>
-								<input type="text" class="form-control" id="notaFiscalNF" name="notaFiscalNF"/>
+								<label for="notaFiscalNF" class="control-label">NFe:</label> <input
+									type="text" class="form-control" id="notaFiscalNF"
+									name="notaFiscalNF" />
 							</div>
 							<div class="col-md-4">
-								<label for="Pessoa" class="control-label">Responsavel da Parcela:</label>
-								<select
-									class="form-control" name="pessoa" id="pessoa">
+								<label for="Pessoa" class="control-label">Responsavel da
+									Parcela:</label> <select class="form-control" name="pessoa" id="pessoa">
 									<option th:each="pessoas : ${ListPessoas}"
-									th:value="${pessoas.codigo}" th:text="${pessoas.nomePessoa}"></option>
+										th:value="${pessoas.codigo}" th:text="${pessoas.nomePessoa}"></option>
 								</select>
-							</div>														
-							
-						</div>			
-						
+							</div>
+
+						</div>
+
 						<div class="form-group">
 							<div class="col-md-10">
 								<button type="submit" class="btn btn-primary">Salvar</button>
 								<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 							</div>
-						</div>					
+						</div>
+					</div>
 				</div>
-	    	</div>
-    	</form>
-    </div>
+			</form>
+		</div>
 
-<div class="table responsive" th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
-		<table id="example" class="table table-striped dt-responsive table-hover" >
-		<thead class="table-bordered alert detalhes">
-			<tr>
-				<th id="PCDescricao" class="text-left ">Parcelas</th>
-				<th id="PCDataVencimento" class="text-center col-md-1">Vencimento</th>
-				<th id="PCStatus" class="text-center col-md-1">Status</th>
-				<th id="PCDataPagamento" class="text-left col-md-1">Dta.Pagamento</th>
-				<th id="PCMesCompetencia" class="text-center col-md-1">Competência</th>
-				<th id="PCValor" class="text-left">Valor</th>
-				<th id="PCNumeroDocumento" class="text-left">N. Doc</th>
-				<th id="PCNF" class="text-left">N. Físcal</th>   		
-				<th id="PCAcao" class="text-center">Ação</th>
-			</tr>
-		</thead>
-		<tr th:each="parcelas : ${parcelas}" th:if="${conta.codigo == parcelas.conta.codigo}">
-   					<td id="PCDescricao"><a class="text-left" th:text=" ${{parcelas.descricaoParcela}} " th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}"></a> </td>
-   					
-   					<td id="PCDataVencimento"> <b class="" th:text=" ${{parcelas.dataVencimento}}" ></b>   																
-						<span class="tdInfoDetalhes infoDetalhesResponsivo">
-							<small class="label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></small>
-   							<small id="modileDataPagamento" th:text=" ${{parcelas.dataPagamento}}" ></small>
-						</span>
-   					</td>
-   					<td id="PCStatus" class="text-center"><span class="text-center label" th:text="${parcelas.status.descricao}" th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></span></td>
-		   			<td id="PCDataPagamento" class="text-center" th:text=" ${{parcelas.dataPagamento}}" ></td>
-   					<td id="PCMesCompetencia" class="text-center" th:text=" ${parcelas.mesCompetencia}" ></td>
-   					<td id="PCValor" class="text-left" th:text=" ${{parcelas.valorParcela}} "> </td>
-   					<td id="PCNumeroDocumento" class="text-left" th:text=" ${{parcelas.numeroDocumento}} "> </td>
-   					<td id="PCNF" class="text-left" th:text=" ${{parcelas.notaFiscalNF}} "> </td>
-   					<td id="PCAcao" class="text-center">
-   						<a class="btn btn-link btn-xs" th:href="@{/controles/parcela/delete/{codigo}(codigo=${parcelas.codigo})}" 
-   								title="Excluir" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-trash"></span>
-   						</a>
-   						<a class="btn btn-link btn-xs" th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}" 
-   								title="Editar" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-pencil"></span>
-   						</a>
-   					</td>		  							   												   					
-   		</tr>
-   		
-	</table>
-</div>
-							
-							
-<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
-</div>
-</section>
+		<div class="table responsive container "
+			th:if="${(conta.formaPagamento.descricao == 'Parcelado')}">
+			<table id="example"
+				class="table table-striped dt-responsive table-hover">
+				<thead class="table-bordered alert detalhes">
+					<tr>
+						<th id="PCDescricao" class="text-left ">Parcelas</th>
+						<th id="PCDataVencimento" class="text-center col-md-1">Vencimento</th>
+						<th id="PCStatus" class="text-center col-md-1">Status</th>
+						<th id="PCDataPagamento" class="text-left col-md-1">Dta.Pagamento</th>
+						<th id="PCMesCompetencia" class="text-center col-md-1">Competência</th>
+						<th id="PCValor" class="text-left">Valor</th>
+						<th id="PCNumeroDocumento" class="text-left">N. Doc</th>
+						<th id="PCNF" class="text-left">N. Físcal</th>
+						<th id="PCAcao" class="text-center">Ação</th>
+					</tr>
+				</thead>
+				<tr th:each="parcelas : ${parcelas}"
+					th:if="${conta.codigo == parcelas.conta.codigo}">
+					<td id="PCDescricao"><a class="text-left"
+						th:text=" ${{parcelas.descricaoParcela}} "
+						th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}"></a>
+					</td>
+
+					<td id="PCDataVencimento"><b class=""
+						th:text=" ${{parcelas.dataVencimento}}"></b> <span
+						class="tdInfoDetalhes infoDetalhesResponsivo"> <small
+							class="label" th:text="${parcelas.status.descricao}"
+							th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></small>
+							<small id="modileDataPagamento"
+							th:text=" ${{parcelas.dataPagamento}}"></small>
+					</span></td>
+					<td id="PCStatus" class="text-center"><span
+						class="text-center label" th:text="${parcelas.status.descricao}"
+						th:classappend="${parcelas.pendente ? 'label-warning' : 'label-success'}"></span></td>
+					<td id="PCDataPagamento" class="text-center"
+						th:text=" ${{parcelas.dataPagamento}}"></td>
+					<td id="PCMesCompetencia" class="text-center"
+						th:text=" ${parcelas.mesCompetencia}"></td>
+					<td id="PCValor" class="text-left"
+						th:text=" ${{parcelas.valorParcela}} "></td>
+					<td id="PCNumeroDocumento" class="text-left"
+						th:text=" ${{parcelas.numeroDocumento}} "></td>
+					<td id="PCNF" class="text-left"
+						th:text=" ${{parcelas.notaFiscalNF}} "></td>
+					<td id="PCAcao" class="text-center"><a
+						class="btn btn-link btn-xs"
+						th:href="@{/controles/parcela/delete/{codigo}(codigo=${parcelas.codigo})}"
+						title="Excluir" rel="tooltip" data-placement="top"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a> <a class="btn btn-link btn-xs"
+						th:href="@{/controles/conta/detalhes/parcela/{codigo}(codigo=${parcelas.codigo})}"
+						title="Editar" rel="tooltip" data-placement="top"> <span
+							class="glyphicon glyphicon-pencil"></span>
+					</a></td>
+				</tr>
+
+			</table>
+		</div>
+
+
+		<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
+	</section>
 </body>
 </html>

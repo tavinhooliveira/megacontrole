@@ -1,3 +1,7 @@
+//Funcão buscar tabela DataTable - tabela completa
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 
 ///Função exportar para o excell
 $(document).ready(function () {
@@ -170,10 +174,7 @@ $("#formaPagamento").on('change', function(){
     }
 });
 
-//Funcão buscar tabela DataTable - tabela completa
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
+
 
 //ModalExcluir Conta
 $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {

@@ -17,7 +17,10 @@ public interface Parcelas extends JpaRepository<Parcela, Long> {
 	 	@Query("SELECT COUNT(c.codigo) FROM Conta c where c.formaPagamento = 'PARCELADO'")
 	    public List<Parcela> findByValorParcelaCONT();
 	 	
-	 
-	
+//	 	@Query(value = "SELECT SUM(valorParcela) FROM Parcela", nativeQuery = true)
+//	 	public List<Parcela> findByValorContaParcelada();
+//	
+	 	@Query("SELECT SUM(valorParcela) FROM Parcela")
+	    public List<Parcela> findByValorContaParcelada();
 
 }
